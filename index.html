@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BrokeOrNot 💸</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800;900&family=Figtree:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap"
+    rel="stylesheet"
+  />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<div id="ph" class="page active">
+  <div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div>
+  <div class="fc fc1"><div style="font-size:.68rem;color:var(--ink2);margin-bottom:4px;">💰 Wallet Left</div><div class="fcv" style="color:var(--te)">₹3,240</div><div style="font-size:.65rem;color:var(--ink2);margin-top:2px;">of ₹8,000 budget</div></div>
+  <div class="fc fc2"><div style="font-size:.68rem;color:var(--ink2);margin-bottom:4px;">🔮 Prediction</div><div class="fcv" style="color:var(--or)">₹680</div><div style="font-size:.65rem;color:var(--ink2);margin-top:2px;">Food this month</div></div>
+  <div class="fc fc3"><div style="font-size:.68rem;color:var(--ink2);margin-bottom:5px;">🏆 Badge Unlocked</div><div style="font-size:1.1rem;">Zen Wallet 🧘</div></div>
+  <div class="hi">
+    <div class="hbadge">✨ Built for broke students everywhere</div>
+    <h1 class="htitle"><span class="l1">Broke</span><span class="l2">OrNot?</span></h1>
+    <p class="hsub">Track your budget, get roasted into saving money, and let AI predict exactly how your cash disappears every month.</p>
+    <div class="hcta"><button class="bh p" onclick="goTo('pl')">Get Started 🚀</button><button class="bh s" onclick="goTo('pl')">Sign In →</button></div>
+    <div class="chips"><div class="chip">💸 Budget Tracking</div><div class="chip">🔥 Sarcastic Roasts</div><div class="chip">🔮 AI Predictions</div><div class="chip">🏆 Badges</div><div class="chip">📊 Analytics</div></div>
+  </div>
+</div>
+
+<div id="pl" class="page">
+  <div class="blob b1" style="background:var(--ye);width:340px;height:340px;top:-80px;right:-60px;"></div>
+  <div class="blob b2" style="background:var(--pk);width:260px;height:260px;bottom:-50px;left:-50px;"></div>
+  <div class="lcard">
+    <div class="llogo">Broke<span>OrNot</span> 💸</div>
+    <div class="lsub">Your financial reality check awaits 👀</div>
+    <div class="atabs"><button class="atab active" onclick="atab('si')">Sign In</button><button class="atab" onclick="atab('su')">Sign Up</button></div>
+    <div class="fsec active" id="ssi">
+      <div class="fg"><label class="fl">Email</label><input type="email" class="fi" id="siem" placeholder="you@college.edu"/></div>
+      <div class="fg"><label class="fl">Password</label><input type="password" class="fi" id="sipw" placeholder="••••••••"/></div>
+      <button class="bsub" onclick="doSI()">Sign In 🔑</button>
+      <div class="divl">or</div>
+      <button class="bg" onclick="doG()"><svg width="17" height="17" viewBox="0 0 48 48"><path fill="#EA4335" d="M24 9.5c3.5 0 6.6 1.2 9.1 3.2l6.8-6.8C35.7 2.3 30.2 0 24 0 14.7 0 6.7 5.4 2.8 13.3l7.9 6.1C12.6 13 17.9 9.5 24 9.5z"/><path fill="#4285F4" d="M46.5 24.5c0-1.6-.1-3.1-.4-4.5H24v8.5h12.7c-.6 3-2.3 5.5-4.8 7.2l7.6 5.9c4.5-4.1 7-10.2 7-17.1z"/><path fill="#FBBC05" d="M10.7 28.6A14.7 14.7 0 019.5 24c0-1.6.3-3.1.7-4.6L2.3 13.3A24 24 0 000 24c0 3.8.9 7.4 2.5 10.6l8.2-6z"/><path fill="#34A853" d="M24 48c6.5 0 11.9-2.1 15.9-5.8l-7.6-5.9c-2.1 1.4-4.8 2.2-8.3 2.2-6.1 0-11.3-4-13.2-9.4L2.6 35.4C6.5 43 14.7 48 24 48z"/></svg>Continue with Google</button>
+      <div style="text-align:center;margin-top:16px;font-size:.8rem;color:var(--ink2);">No account? <a href="#" onclick="atab('su')" style="color:var(--or);font-weight:700;text-decoration:none;">Sign up free →</a></div>
+    </div>
+    <div class="fsec" id="ssu">
+      <div class="fg"><label class="fl">Your Name</label><input type="text" class="fi" id="sunm" placeholder="e.g. Riya"/></div>
+      <div class="fg"><label class="fl">Email</label><input type="email" class="fi" id="suem" placeholder="you@college.edu"/></div>
+      <div class="fg"><label class="fl">Password</label><input type="password" class="fi" id="supw" placeholder="Make it strong!"/></div>
+      <button class="bsub" onclick="doSU()">Create Account 🎉</button>
+      <div class="divl">or</div>
+      <button class="bg" onclick="doG()"><svg width="17" height="17" viewBox="0 0 48 48"><path fill="#EA4335" d="M24 9.5c3.5 0 6.6 1.2 9.1 3.2l6.8-6.8C35.7 2.3 30.2 0 24 0 14.7 0 6.7 5.4 2.8 13.3l7.9 6.1C12.6 13 17.9 9.5 24 9.5z"/><path fill="#4285F4" d="M46.5 24.5c0-1.6-.1-3.1-.4-4.5H24v8.5h12.7c-.6 3-2.3 5.5-4.8 7.2l7.6 5.9c4.5-4.1 7-10.2 7-17.1z"/><path fill="#FBBC05" d="M10.7 28.6A14.7 14.7 0 019.5 24c0-1.6.3-3.1.7-4.6L2.3 13.3A24 24 0 000 24c0 3.8.9 7.4 2.5 10.6l8.2-6z"/><path fill="#34A853" d="M24 48c6.5 0 11.9-2.1 15.9-5.8l-7.6-5.9c-2.1 1.4-4.8 2.2-8.3 2.2-6.1 0-11.3-4-13.2-9.4L2.6 35.4C6.5 43 14.7 48 24 48z"/></svg>Continue with Google</button>
+    </div>
+    <div style="text-align:center;margin-top:18px;"><button onclick="goTo('ph')" style="background:none;border:none;font-size:.78rem;color:var(--ink2);cursor:pointer;text-decoration:underline;">← Back to home</button></div>
+  </div>
+</div>
+
+<div id="pd" class="page">
+  <nav class="dnav">
+    <div class="nlogo">Broke<span>OrNot</span> 💸</div>
+    <div class="nr">
+      <div class="nday" id="nday"></div>
+      <div class="nrem" id="nrem"></div>
+      <span class="nnm" id="nnm"></span>
+      <div class="nav" id="nav2">?</div>
+      <button class="blo" onclick="doLo()">Logout</button>
+    </div>
+  </nav>
+  <div class="dbd">
+    <div id="emp">
+      <div class="eill">🪙</div>
+      <h2 class="etl">Hey <span id="enm">there</span>! 👋</h2>
+      <p class="esu">Nothing here yet. Set your monthly budget and add your first expense — then watch the dashboard come alive!</p>
+      <div class="sgrid">
+        <div class="scard" style="border-top:4px solid var(--te);">
+          <div class="sct">💰 Set Your Budget</div>
+          <div class="scs">How much do you have this month?</div>
+          <div class="dfg"><label class="dl">Monthly Budget (₹)</label><input type="number" class="di" id="ebud" placeholder="e.g. 8000" min="0"/></div>
+          <button class="badd" style="background:linear-gradient(135deg,var(--te),var(--bl));" onclick="sBud('ebud')">Set Budget 🎯</button>
+        </div>
+        <div class="scard" style="border-top:4px solid var(--or);">
+          <div class="sct">➕ First Expense</div>
+          <div class="scs">What did you spend on first?</div>
+          <div class="dfg"><input type="text" class="di" id="edesc" placeholder="e.g. Biryani 🍛" maxlength="40"/></div>
+          <div class="drow">
+            <div class="dfg"><input type="number" class="di" id="eamt" placeholder="₹ Amount" min="0"/></div>
+            <div class="dfg"><select class="di dis" id="ecat"><option value="food">🍔 Food</option><option value="transport">🚌 Transport</option><option value="entertainment">🎮 Entertainment</option><option value="education">📚 Education</option><option value="health">💊 Health</option><option value="clothing">👕 Clothing</option><option value="other">📦 Other</option></select></div>
+          </div>
+          <button class="badd" onclick="aExp('edesc','eamt','ecat')">Add Expense 🔥</button>
+        </div>
+      </div>
+    </div>
+    <div id="dc">
+      <!-- ROAST BANNER -->
+      <div class="rbar" id="rbar"><div class="rt" id="rt"></div><div class="rb" id="rb"></div></div>
+      <div class="ws">
+        <div class="wsi"><div class="wsl">💰 Remaining</div><div class="wsv" id="wsr">₹0</div><div class="wss" id="wssu">of ₹0 budget</div></div>
+        <div class="wsi"><div class="wsl">💸 Total Spent</div><div class="wsv" id="wss2" style="color:rgba(255,255,255,.82);font-size:1.8rem">₹0</div><div class="wss" id="wsd">₹0/day safe</div></div>
+        <div class="wsi"><div class="wsl">📅 Today</div><div class="wsv" id="wst" style="color:rgba(255,255,255,.82);font-size:1.8rem">₹0</div><div class="wss" id="wsm">😊 Keep it up!</div></div>
+        <div class="wsp"><div class="wst2"><div class="wsf" id="wsf" style="width:0%"></div></div><div class="wspl"><span class="wsplb" id="wsp">0% spent</span><span class="wsplb" id="wsdl"></span></div></div>
+      </div>
+      <div class="sr">
+        <div class="sc sc1"><div class="si">📈</div><div class="sv" id="sh">₹0</div><div class="sl">Biggest Splurge</div></div>
+        <div class="sc sc2"><div class="si">🔢</div><div class="sv" id="sc2">0</div><div class="sl">Transactions</div></div>
+        <div class="sc sc3"><div class="si">📦</div><div class="sv" id="st">—</div><div class="sl">Top Category</div></div>
+        <div class="sc sc4"><div class="si">📊</div><div class="sv" id="sa">₹0</div><div class="sl">Avg/Day</div></div>
+      </div>
+      <div class="dt"><button class="dtb active" onclick="dTab('ov')">📊 Overview</button><button class="dtb" onclick="dTab('tx')">💳 Transactions</button><button class="dtb" onclick="dTab('pr')">🔮 Predictions</button><button class="dtb" onclick="dTab('ba')">🏆 Badges</button></div>
+      <div class="dtc active" id="dtov">
+        <div class="dgrid">
+          <div class="card">
+            <div class="ct">➕ Add Expense</div>
+            <div class="dfg"><label class="dl">Description</label><input type="text" class="di" id="ddesc" placeholder="What did you buy?" maxlength="40"/></div>
+            <div class="drow"><div class="dfg"><label class="dl">Amount (₹)</label><input type="number" class="di" id="damt" placeholder="0"/></div><div class="dfg"><label class="dl">Category</label><select class="di dis" id="dcat"><option value="food">🍔 Food</option><option value="transport">🚌 Transport</option><option value="entertainment">🎮 Entertainment</option><option value="education">📚 Education</option><option value="health">💊 Health</option><option value="clothing">👕 Clothing</option><option value="other">📦 Other</option></select></div></div>
+            <button class="badd" onclick="aExp('ddesc','damt','dcat')">Add Expense 💥</button>
+            <div class="bupd"><input type="number" class="di" id="dbud" placeholder="Update budget ₹" style="flex:1"/><button class="bsm" onclick="sBud('dbud')">Update 💰</button></div>
+          </div>
+          <div class="card">
+            <div class="ct">📊 Breakdown <span class="cbadge">THIS MONTH</span></div>
+            <div id="cch"><div class="et"><div class="eti">📊</div><div class="etx">Add expenses to see breakdown</div></div></div>
+            <div style="margin-top:20px;padding-top:16px;border-top:2px solid var(--bd);"><div class="ct" style="margin-bottom:10px;font-size:.86rem;">🗓️ Heatmap</div><div class="hmap" id="hmap"></div></div>
+          </div>
+        </div>
+      </div>
+      <div class="dtc" id="dttx">
+        <div class="card">
+          <div class="ct">💳 All Transactions <button onclick="clrAll()" style="margin-left:auto;background:#FFF0F0;border:2px solid #FFD0D0;color:var(--dan);padding:6px 14px;border-radius:100px;font-size:.72rem;font-weight:700;cursor:pointer;font-family:'Syne',sans-serif;transition:all .2s;" onmouseenter="this.style.background='#FFE0E0'" onmouseleave="this.style.background='#FFF0F0'">Clear All 🗑️</button></div>
+          <div id="txl" style="max-height:520px;overflow-y:auto;"></div>
+        </div>
+      </div>
+      <div class="dtc" id="dtpr">
+        <div class="card" style="margin-bottom:18px;">
+          <div class="ct">🔮 AI Spend Predictions <span class="cbadge">LEARNING YOUR HABITS</span></div>
+          <p style="font-size:.83rem;color:var(--ink2);">Based on your spending history — here's how your money's about to vanish 🫠</p>
+          <div class="pgrid" id="pg"><div class="et" style="grid-column:1/-1"><div class="eti">🔮</div><div class="etx">Keep spending across months — I'll figure out your financial personality.</div></div></div>
+        </div>
+        <div class="card"><div class="ct">📈 Monthly Trend</div><div id="tc"><div class="et"><div class="eti">📈</div><div class="etx">Need data from multiple months.</div></div></div></div>
+      </div>
+      <div class="dtc" id="dtba"><div class="card"><div class="ct">🏆 Your Achievements</div><div id="achl"></div></div></div>
+    </div>
+  </div>
+</div>
+
+<!-- RED ALERT OVERLAYS -->
+<div id="alertEdge"></div>
+<div id="alertLeft"></div>
+<div id="alertRight"></div>
+<div id="screenFlash"></div>
+
+<!-- CRITICAL POPUP -->
+<div id="criticalPopup">
+  <div class="cp-icon" id="cpIcon">⚠️</div>
+  <div class="cp-sev" id="cpSev">⚠️ CRITICAL ALERT</div>
+  <div class="cp-title" id="cpTitle">ARE YOU SURE ABOUT THIS?</div>
+  <div class="cp-body" id="cpBody">Your wallet is already on life support and you just added another expense. Bold. Unhinged. Financially irresponsible.</div>
+</div>
+
+<div id="toast"></div>
+
+  <script src="app.js"></script>
+</body>
+</html>
