@@ -6,20 +6,110 @@
 const G=id=>document.getElementById(id);
 const fmt=n=>'\u20b9'+Math.round(Math.max(n,0)).toLocaleString('en-IN');
 const now=new Date(),mK=`${now.getFullYear()}-${now.getMonth()+1}`,dom=now.getDate(),dim=new Date(now.getFullYear(),now.getMonth()+1,0).getDate();
-let S=JSON.parse(localStorage.getItem('bon4')||'{}');
+let currentUser = localStorage.getItem('currentUser') || null;
+
+let S = currentUser
+  ? JSON.parse(localStorage.getItem('bon4_' + currentUser) || '{}')
+  : {};
 if(!S.budget)S.budget=0;
 if(!S.months)S.months={};
 if(!S.months[mK])S.months[mK]={transactions:[]};
 if(!S.unlocked)S.unlocked=[];
 const txs=()=>S.months[mK].transactions;
-const save=()=>localStorage.setItem('bon4',JSON.stringify(S));
+const save = () => {
+  if(currentUser){
+    localStorage.setItem(
+      'bon4_' + currentUser,
+      JSON.stringify(S)
+    );
+  }
+};
 
 function goTo(p){document.querySelectorAll('.page').forEach(x=>x.classList.remove('active'));G(p).classList.add('active');if(p==='pd')rDash();}
 function atab(t){document.querySelectorAll('.atab').forEach((x,i)=>x.classList.toggle('active',['si','su'][i]===t));G('ssi').classList.toggle('active',t==='si');G('ssu').classList.toggle('active',t==='su');}
-function doSI(){const em=G('siem').value.trim(),pw=G('sipw').value;if(!em||!pw){showToast('Fill in all fields!');return;}S.userName=S.userName||em.split('@')[0];save();eDash(S.userName);}
-function doSU(){const nm=G('sunm').value.trim(),em=G('suem').value.trim(),pw=G('supw').value;if(!nm||!em||!pw){showToast('Fill in all fields!');return;}S.userName=nm;save();eDash(nm);}
+function doSI(){
+  const em = G('siem').value.trim();
+  const pw = G('sipw').value.trim();
+
+  const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+  if(!em || !pw){
+    showToast('Fill in all fields!');
+    return;
+  }
+
+  if(!emailPattern.test(em)){
+    showToast('Enter a valid email!');
+    return;
+  }
+
+  if(pw.length < 6){
+    showToast('Password must be at least 6 characters!');
+    return;
+  }
+
+  currentUser = em;
+
+  localStorage.setItem('currentUser', currentUser);
+
+  S = JSON.parse(
+    localStorage.getItem('bon4_' + currentUser) || '{}'
+  );
+
+  if(!S.budget) S.budget = 0;
+  if(!S.months) S.months = {};
+  if(!S.months[mK]) S.months[mK] = {transactions:[]};
+  if(!S.unlocked) S.unlocked = [];
+
+  S.userName = S.userName || em.split('@')[0];
+
+  save();
+
+  eDash(S.userName);
+}
+
+
+function doSU(){
+  const nm = G('sunm').value.trim();
+  const em = G('suem').value.trim();
+  const pw = G('supw').value;
+
+  if(!nm || !em || !pw){
+    showToast('Fill in all fields!');
+    return;
+  }
+
+  currentUser = em;
+
+  localStorage.setItem('currentUser', currentUser);
+
+  S = {
+    userName: nm,
+    budget: 0,
+    months: {},
+    unlocked: []
+  };
+
+  S.months[mK] = {transactions:[]};
+
+  save();
+
+  eDash(nm);
+}
 function doG(){S.userName=S.userName||'Student';save();eDash(S.userName);}
-function doLo(){setAlertMode(null);window._alertMode=null;goTo('ph');}
+function doLo(){
+  setAlertMode(null);
+
+  window._alertMode = null;
+
+  localStorage.removeItem('currentUser');
+
+  currentUser = null;
+
+  S = {};
+
+  goTo('ph');
+}
 function eDash(nm){G('nnm').textContent=nm;G('nav2').textContent=nm.charAt(0).toUpperCase();G('enm').textContent=nm.split(' ')[0];G('nday').textContent='Day '+dom+' of '+dim;goTo('pd');}
 function sBud(id){const v=parseFloat(G(id).value);if(!v||v<=0){showToast('Enter a valid budget!');return;}S.budget=v;save();G(id).value='';showToast('Budget set to '+fmt(v)+'!');rDash();}
 
@@ -32,6 +122,7 @@ function aExp(di,ai,ci){
   rDash();
   setTimeout(function(){if(window._alertMode)triggerPopup(window._alertMode);},80);
 }
+
 
 function dTx(id){S.months[mK].transactions=txs().filter(t=>t.id!==id);save();showToast('Removed!');rDash();}
 function clrAll(){if(!confirm('Clear all transactions?'))return;S.months[mK].transactions=[];save();rDash();showToast('Cleared!');}
@@ -270,4 +361,6 @@ document.addEventListener('keydown',function(e){
   }
 });
 
-if(S.userName)eDash(S.userName);
+if(currentUser && S.userName){
+  eDash(S.userName);
+}
